@@ -10,4 +10,8 @@ class DayOneTest extends AnyFlatSpec with should.Matchers {
   "Sample file" should "have 7 values increased" in {
     DayOne.dayOnePart1("day_one_0.txt").unsafeRunSync() should be (7)
   }
+
+  "Sample file" should "have 5 triplet sum values increased" in {
+    DayOne.dayOnePart2("day_one_0.txt").unsafeRunSync() should be (5)
+  }
 }
