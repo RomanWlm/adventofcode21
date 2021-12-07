@@ -13,3 +13,7 @@ lazy val aoc21 = (project in file("."))
     libraryDependencies += fs2Io,
     libraryDependencies += catsCore
   )
+
+// https://github.com/sbt/sbt/issues/3963
+run := Defaults.runTask(fullClasspath in Runtime, mainClass in run in Compile, runner in run).evaluated
+
