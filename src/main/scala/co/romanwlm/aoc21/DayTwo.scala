@@ -1,14 +1,11 @@
 package co.romanwlm.aoc21
 
-import cats.Eval.False
+import cats.effect.unsafe.implicits.global
 import cats.effect.{Concurrent, IO, IOApp, Resource}
 import fs2.{Stream, hash, text}
 import fs2.io.file.{Files, Path}
-import cats.effect.std.Console
-import cats.effect.unsafe.implicits.global
-import co.romanwlm.aoc21.DayOne.getClass
-
 import scala.io.Source
+
 
 object DayTwo extends IOApp.Simple {
 
@@ -47,7 +44,7 @@ object DayTwo extends IOApp.Simple {
       pos: Position <- fileAsStream(path).compile
         .fold(Position(0, 0))((pos, cmd) => pos.move(cmd))
       _ <- IO.println(s"Day Two - Part 1 - Sample $inputFile - " +
-        s"Position (horizontal : ${pos.x}, depth : ${pos.y}) => ${pos.product}")    } yield pos.product
+        s"Position (horizontal : ${pos.x}, depth : ${pos.y}) => ${pos.product}")} yield pos.product
 
   def dayTwoPart2(inputFile: String): IO[Int] =
     for {
