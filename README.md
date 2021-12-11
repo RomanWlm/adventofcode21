@@ -58,7 +58,7 @@ iteration_
 
 *(Played a bit with Console Color logging)*
 
-###### Sample Result :
+###### Test Sample Result :
 
 ```
   Compute O2 Report... 
@@ -102,3 +102,33 @@ Position 7 - Bit retained to discriminate [0] - Candidates = 001011100001,001011
 Position 8 - Bit retained to discriminate [0] - Candidates = 001011100001
 Day Three - Part 2 - Sample day_three_input.txt - Reported O2(100111110011) - CO2(001011100001) => 2547 * 737 = 1877139
 ```
+
+### [Day Four](src/main/scala/co/romanwlm/aoc21/DayFour.scala)
+
+#### Part 1
+
+_Use type aliasing_ `type Board = Array[Array[Int]]` _and implicit to enrich type :_
+`implicit class RichBoard(board: Board)`. 
+Not optimal here as it hasn't "fail fast" approach and compute for each board independently :
+- remove values up to bingo state or no more draw
+- sum of remaining values if bingo is reached
+- draw iteration number on which it reaches bingo_
+
+_Once all board scores has been computed we just keep the one with minimum draw iteration number and consider it as **Winner**_ 
+###### Test Sample : 
+```
+Board has met bingo => Draw=16 Sum=137 RemainingDraws=13 Score=2192
+Board has met bingo => Draw=13 Sum=148 RemainingDraws=12 Score=1924
+Board has met bingo => Draw=24 Sum=188 RemainingDraws=15 Score=4512
+Best board won at draw number 12 with score=4512
+````
+###### Input file Result : 
+```
+Board has met bingo => Draw=82 Sum=600 RemainingDraws=36 Score=49200
+Board has met bingo => Draw=22 Sum=230 RemainingDraws=19 Score=5060
+...
+Board has met bingo => Draw=95 Sum=884 RemainingDraws=71 Score=83980
+Board has met bingo => Draw=82 Sum=880 RemainingDraws=36 Score=72160
+Board has met bingo => Draw=31 Sum=583 RemainingDraws=62 Score=18073
+Best board won at draw number 18 with score=44736
+````

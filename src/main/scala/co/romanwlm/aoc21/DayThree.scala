@@ -28,7 +28,7 @@ object DayThree extends IOApp.Simple {
 
   def dayThreePart1(inputFile: String): IO[Int] =
     for {
-      path <- resourceAsPath(inputFile)
+      path <- Utils.resourceAsPath(inputFile)
       binarySignal <- Utils.fileAsStream[Array[Int]](path, str => asIntArray(str)).compile
         .fold(SignalRecorder())((rec: SignalRecorder, value: Array[Int]) => rec.record(value))
         .flatMap(asBinary)
@@ -43,7 +43,7 @@ object DayThree extends IOApp.Simple {
 
   def dayThreePart2(inputFile: String): IO[Int] =
     for {
-      path <- resourceAsPath(inputFile)
+      path <- Utils.resourceAsPath(inputFile)
       binarySignalSummary <- Utils.fileAsStream[Array[Int]](path, str => asIntArray(str)).compile
         .fold(SignalRecorder())((rec: SignalRecorder, value: Array[Int]) => rec.record(value))
         .flatMap(asBinary)
@@ -102,8 +102,6 @@ object DayThree extends IOApp.Simple {
   def binaryStringToInt(binaryStr: String): IO[Int] = IO(Integer.parseInt(binaryStr, 2))
 
   def oneSComplementOf(arr: Array[Boolean]): IO[Array[Boolean]] = IO(arr.map(v => !v))
-
-  def resourceAsPath(inputFile: String): IO[Path] = IO(Path(getClass.getClassLoader.getResource(inputFile).getPath))
 
   object SignalRecorder {
     def sum(left: Array[Int], right: Array[Int]): Array[Int] = if left.isEmpty then right else left.zip(right).map((l, r) => l + r)

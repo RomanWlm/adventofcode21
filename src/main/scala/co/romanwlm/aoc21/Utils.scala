@@ -10,4 +10,6 @@ object Utils {
       .through(text.utf8.decode)
       .through(text.lines)
       .evalMap(f)
+
+  def resourceAsPath(inputFile: String): IO[Path] = IO(Path(getClass.getClassLoader.getResource(inputFile).getPath))
 }
