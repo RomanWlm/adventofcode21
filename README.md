@@ -132,3 +132,19 @@ Board has met bingo => Draw=82 Sum=880 RemainingDraws=36 Score=72160
 Board has met bingo => Draw=31 Sum=583 RemainingDraws=62 Score=18073
 Best board won at draw number 18 with score=44736
 ````
+
+#### Part 2
+
+_Ok luckily, the suboptimal aspect of part one is exactly what part 2 needs : 
+compute all board scores and keep the worst scored one._
+_So the only changes from part one is the board ordering at the end of computation. And that's it !_
+
+###### Input file Result :
+```
+Board has met bingo => Draw=82 Sum=600 RemainingDraws=36 Score=49200
+Board has met bingo => Draw=22 Sum=230 RemainingDraws=19 Score=5060
+...
+Board has met bingo => Draw=82 Sum=880 RemainingDraws=36 Score=72160
+Board has met bingo => Draw=31 Sum=583 RemainingDraws=62 Score=18073
+Worst board is ending at draw number 88 with score=1827
+```
