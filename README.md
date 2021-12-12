@@ -1,5 +1,14 @@
 # Playing with advent of code 21's edition
 
+##Summary : 
+- [Day One](https://github.com/RomanWlm/adventofcode21#day-one)
+- [Day Two](https://github.com/RomanWlm/adventofcode21#day-two)
+- [Day Three](https://github.com/RomanWlm/adventofcode21#day-three)
+- [Day Four](https://github.com/RomanWlm/adventofcode21#day-four)
+- [Day Five](https://github.com/RomanWlm/adventofcode21#day-five)
+- [Day Six](https://github.com/RomanWlm/adventofcode21#day-six)
+
+___
 ### [Day One](src/main/scala/co/romanwlm/aoc21/DayOne.scala)
 
 #### Part 1
@@ -20,6 +29,7 @@ Day One - Part 2 - Sample day_one_0.txt - found 5 increased values
 Day One - Part 2 - Sample day_one_1.txt - found 1538 increased values
 ```
 
+___
 ### [Day Two](src/main/scala/co/romanwlm/aoc21/DayTwo.scala)
 
 _Stream based - Define here Command and Position data types with combination. For second part Just added aim attribute
@@ -38,7 +48,7 @@ Day Two - Part 1 - Sample day_two_input.txt - Position (horizontal : 1990, depth
 Day Two - Part 2 - Sample day_two_sample.txt - Position (horizontal : 15, depth : 60, aim: 10) => 900
 Day Two - Part 2 - Sample day_two_input.txt - Position (horizontal : 1990, depth : 992674, aim: 1000) => 1975421260
 ```
-
+___
 ### [Day Three](src/main/scala/co/romanwlm/aoc21/DayThree.scala)
 
 #### Part 1
@@ -102,7 +112,7 @@ Position 7 - Bit retained to discriminate [0] - Candidates = 001011100001,001011
 Position 8 - Bit retained to discriminate [0] - Candidates = 001011100001
 Day Three - Part 2 - Sample day_three_input.txt - Reported O2(100111110011) - CO2(001011100001) => 2547 * 737 = 1877139
 ```
-
+___
 ### [Day Four](src/main/scala/co/romanwlm/aoc21/DayFour.scala)
 
 #### Part 1
@@ -148,7 +158,7 @@ Board has met bingo => Draw=82 Sum=880 RemainingDraws=36 Score=72160
 Board has met bingo => Draw=31 Sum=583 RemainingDraws=62 Score=18073
 Worst board is ending at draw number 88 with score=1827
 ```
-
+___
 ### [Day Five](src/main/scala/co/romanwlm/aoc21/DayFive.scala)
 
 #### Part 1
@@ -230,3 +240,49 @@ Day Five - Part 2 - day_five_sample.txt - considering horizontal, vertical and d
 ```
 Day Five - Part 2 - day_five_input.txt - considering horizontal, vertical and diagonal lines, has found 20373 intersections
 ````
+___
+### [Day Six](src/main/scala/co/romanwlm/aoc21/DaySix.scala)
+
+#### Part 1
+
+_Naive approach with List transformation, create new list each day and appends new fishes at the end. Length of the list is then the number of living fishes after X days._
+
+###### Result : 
+
+```
+-- Day Six Part 1 - Test Sample File 
+---
+Day Six - Part 1 - day_six_sample.txt - initial state : 3,4,3,1,2
+Day Six - Part 1 - day_six_sample.txt - after 80 days : 5934 lanternfishes
+---
+-- Day Six Part 1 - Input File 
+--- 
+Day Six - Part 1 - day_six_input.txt - initial state : 1,5,5,1,5,1,5,3,1,3,2,4,3,4,1,1,3,5,4,4,2,1,2,1,2,1,2,1,5,2,1,5,1,2,2,1,5,5,5,1,1,1,5,1,3,4,5,1,2,2,5,5,3,4,5,4,4,1,4,5,3,4,4,5,2,4,2,2,1,3,4,3,2,3,4,1,4,4,4,5,1,3,4,2,5,4,5,3,1,4,1,1,1,2,4,2,1,5,1,4,5,3,3,4,1,1,4,3,4,1,1,1,5,4,3,5,2,4,1,1,2,3,2,4,4,3,3,5,3,1,4,5,5,4,3,3,5,1,5,3,5,2,5,1,5,5,2,3,3,1,1,2,2,4,3,1,5,1,1,3,1,4,1,2,3,5,5,1,2,3,4,3,4,1,1,5,5,3,3,4,5,1,1,4,1,4,1,3,5,5,1,4,3,1,3,5,5,5,5,5,2,2,1,2,4,1,5,3,3,5,4,5,4,1,5,1,5,1,2,5,4,5,5,3,2,2,2,5,4,4,3,3,1,4,1,2,3,1,5,4,5,3,4,1,1,2,2,1,2,5,1,1,1,5,4,5,2,1,4,4,1,1,3,3,1,3,2,1,5,2,3,4,5,3,5,4,3,1,3,5,5,5,5,2,1,1,4,2,5,1,5,1,3,4,3,5,5,1,4,3
+Day Six - Part 1 - day_six_input.txt - after 80 days : 346063 lanternfishes
+```
+
+#### Part 2
+
+_Part 2 has big enough number of day to make previous approch impossible to compute whithin a reasonable amount of time :
+creating new list each day which is bigger and bigger... Furthermore using an Int to represent number of fishes 
+will not work as final number of fishes overflows `Integer.MAX_VALUE`._
+
+_Choose to use an array of Long, 9 values sized on which each indices represent the number of day and values the 
+count of living fishes within same age. Therefore using array permit `inplace` computation and avoid copy_
+
+###### Result :
+
+```
+---
+-- Day Six Part 2 - Test Sample File 
+---
+Day Six - Part 2 - day_six_sample.txt - initial state : 3,4,3,1,2
+Day Six - Part 2 - day_six_sample.txt - after 256 days : 26984457539 
+Lanternfishes => Day:0 Count:2376852196 , Day:1 Count:2731163883 , Day:2 Count:2897294544 , Day:3 Count:3164316379 , Day:4 Count:3541830408 , Day:5 Count:3681986557 , Day:6 Count:4275812629 , Day:7 Count:1985489551 , Day:8 Count:2329711392
+---
+-- Day Six Part 2 - Input File 
+--- 
+Day Six - Part 2 - day_six_input.txt - initial state : 1,5,5,1,5,1,5,3,1,3,2,4,3,4,1,1,3,5,4,4,2,1,2,1,2,1,2,1,5,2,1,5,1,2,2,1,5,5,5,1,1,1,5,1,3,4,5,1,2,2,5,5,3,4,5,4,4,1,4,5,3,4,4,5,2,4,2,2,1,3,4,3,2,3,4,1,4,4,4,5,1,3,4,2,5,4,5,3,1,4,1,1,1,2,4,2,1,5,1,4,5,3,3,4,1,1,4,3,4,1,1,1,5,4,3,5,2,4,1,1,2,3,2,4,4,3,3,5,3,1,4,5,5,4,3,3,5,1,5,3,5,2,5,1,5,5,2,3,3,1,1,2,2,4,3,1,5,1,1,3,1,4,1,2,3,5,5,1,2,3,4,3,4,1,1,5,5,3,3,4,5,1,1,4,1,4,1,3,5,5,1,4,3,1,3,5,5,5,5,5,2,2,1,2,4,1,5,3,3,5,4,5,4,1,5,1,5,1,2,5,4,5,5,3,2,2,2,5,4,4,3,3,1,4,1,2,3,1,5,4,5,3,4,1,1,2,2,1,2,5,1,1,1,5,4,5,2,1,4,4,1,1,3,3,1,3,2,1,5,2,3,4,5,3,5,4,3,1,3,5,5,5,5,2,1,1,4,2,5,1,5,1,3,4,3,5,5,1,4,3
+Day Six - Part 2 - day_six_input.txt - after 256 days : 1572358335990 
+Lanternfishes => Day:0 Count:137678332654 , Day:1 Count:160561292390 , Day:2 Count:166852686249 , Day:3 Count:186547514830 , Day:4 Count:204252710084 , Day:5 Count:216138971011 , Day:6 Count:248325538140 , Day:7 Count:116146872252 , Day:8 Count:135854418380
+```
