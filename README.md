@@ -148,3 +148,85 @@ Board has met bingo => Draw=82 Sum=880 RemainingDraws=36 Score=72160
 Board has met bingo => Draw=31 Sum=583 RemainingDraws=62 Score=18073
 Worst board is ending at draw number 88 with score=1827
 ```
+
+### [Day Five](src/main/scala/co/romanwlm/aoc21/DayFive.scala)
+
+#### Part 1
+
+_Use Lines case class and Points class. For each Horizontal / Vertical / Diagonal matching lines, 
+generate points between the two ends that make the lines. 
+Then impact the 2D plan with generated points by counting how many points has matched each coordinates.
+Generate the plan graphically (too big for my IDE terminal buffer :p)_
+
+_**Note** : Could be probably better if instead of generating points that belong to a lines we would just have to deduce if two lines intersect or not directly from ends coordinates._
+###### Test Sample : 
+```
+---
+-- Day Five Part 1 - Test Sample File 
+---
+Lines : 
+0,9 -> 5,9
+8,0 -> 0,8
+9,4 -> 3,4
+2,2 -> 2,1
+7,0 -> 7,4
+6,4 -> 2,0
+0,9 -> 2,9
+3,4 -> 1,4
+0,0 -> 8,8
+5,5 -> 8,2
+
+Plan : 
+. . . . . . . 1 . .
+. . 1 . . . . 1 . .
+. . 1 . . . . 1 . .
+. . . . . . . 1 . .
+. 1 1 2 1 1 1 2 1 1
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+2 2 2 1 1 1 . . . .
+Day Five - Part 1 - day_five_sample.txt - considering horizontal and vertical lines, has found 5 intersections
+````
+###### Input file Result : 
+```
+Day Five - Part 1 - day_five_input.txt - considering horizontal and vertical lines, has found 6113 intersections
+````
+
+#### Part 2
+
+_With diagonal lines detection_
+
+###### Sample file Result :
+```
+Lines : 
+0,9 -> 5,9
+8,0 -> 0,8
+9,4 -> 3,4
+2,2 -> 2,1
+7,0 -> 7,4
+6,4 -> 2,0
+0,9 -> 2,9
+3,4 -> 1,4
+0,0 -> 8,8
+5,5 -> 8,2
+
+Plan : 
+1 . 1 . . . . 1 1 .
+. 1 1 1 . . . 2 . .
+. . 2 . 1 . 1 1 1 .
+. . . 1 . 2 . 2 . .
+. 1 1 2 3 1 3 2 1 1
+. . . 1 . 2 . . . .
+. . 1 . . . 1 . . .
+. 1 . . . . . 1 . .
+1 . . . . . . . 1 .
+2 2 2 1 1 1 . . . .
+Day Five - Part 2 - day_five_sample.txt - considering horizontal, vertical and diagonal lines, has found 12 intersections
+```
+
+###### Input file Result :
+```
+Day Five - Part 2 - day_five_input.txt - considering horizontal, vertical and diagonal lines, has found 20373 intersections
+````
