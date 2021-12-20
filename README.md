@@ -7,6 +7,7 @@
 - [Day Four](https://github.com/RomanWlm/adventofcode21#day-four)
 - [Day Five](https://github.com/RomanWlm/adventofcode21#day-five)
 - [Day Six](https://github.com/RomanWlm/adventofcode21#day-six)
+- [Day Seven](https://github.com/RomanWlm/adventofcode21#day-seven)
 
 ___
 ### [Day One](src/main/scala/co/romanwlm/aoc21/DayOne.scala)
@@ -285,4 +286,40 @@ Lanternfishes => Day:0 Count:2376852196 , Day:1 Count:2731163883 , Day:2 Count:2
 Day Six - Part 2 - day_six_input.txt - initial state : 1,5,5,1,5,1,5,3,1,3,2,4,3,4,1,1,3,5,4,4,2,1,2,1,2,1,2,1,5,2,1,5,1,2,2,1,5,5,5,1,1,1,5,1,3,4,5,1,2,2,5,5,3,4,5,4,4,1,4,5,3,4,4,5,2,4,2,2,1,3,4,3,2,3,4,1,4,4,4,5,1,3,4,2,5,4,5,3,1,4,1,1,1,2,4,2,1,5,1,4,5,3,3,4,1,1,4,3,4,1,1,1,5,4,3,5,2,4,1,1,2,3,2,4,4,3,3,5,3,1,4,5,5,4,3,3,5,1,5,3,5,2,5,1,5,5,2,3,3,1,1,2,2,4,3,1,5,1,1,3,1,4,1,2,3,5,5,1,2,3,4,3,4,1,1,5,5,3,3,4,5,1,1,4,1,4,1,3,5,5,1,4,3,1,3,5,5,5,5,5,2,2,1,2,4,1,5,3,3,5,4,5,4,1,5,1,5,1,2,5,4,5,5,3,2,2,2,5,4,4,3,3,1,4,1,2,3,1,5,4,5,3,4,1,1,2,2,1,2,5,1,1,1,5,4,5,2,1,4,4,1,1,3,3,1,3,2,1,5,2,3,4,5,3,5,4,3,1,3,5,5,5,5,2,1,1,4,2,5,1,5,1,3,4,3,5,5,1,4,3
 Day Six - Part 2 - day_six_input.txt - after 256 days : 1572358335990 
 Lanternfishes => Day:0 Count:137678332654 , Day:1 Count:160561292390 , Day:2 Count:166852686249 , Day:3 Count:186547514830 , Day:4 Count:204252710084 , Day:5 Count:216138971011 , Day:6 Count:248325538140 , Day:7 Count:116146872252 , Day:8 Count:135854418380
+```
+
+___
+### [Day Seven](src/main/scala/co/romanwlm/aoc21/DaySeven.scala)
+
+#### Part 1
+
+_Optimized `brute force` approach by considering minimal value and progressively going to maximal position with stopping condition when cost is becoming worst._
+
+###### Result :
+
+```
+
+---
+-- Day seven Part 1 - Test Sample File
+---
+This costs a total of 37 fuel. This is the cheapest possible outcome.
+
+---
+-- Day seven Part 1 - Input File
+--- 
+This costs a total of 328318 fuel. This is the cheapest possible outcome.
+```
+#### Part 2
+_Same naive approach with different fuel consumption calculation._
+_Used ` dist = abs(crab-position - hole-position)` => `cost = ((dist * ( dist + 1)) / 2` as formula (Gauss formula, sum of n first integers)._
+
+###### Result :
+```
+-- Day seven Part 2 - Test Sample File 
+---
+All crabs moves results to costs a total of 168 fuel. This is the cheapest possible outcome.
+---
+-- Day seven Part 2 - Input File 
+--- 
+All crabs moves results to costs a total of 89791146 fuel. This is the cheapest possible outcome.
 ```
